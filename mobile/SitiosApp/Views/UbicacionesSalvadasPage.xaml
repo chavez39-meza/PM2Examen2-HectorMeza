@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SitiosApp.Views.UbicacionesSalvadasPage"
+             Title="Ubicaciones Salvadas">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto" Padding="10" RowSpacing="10">
+
+        <Button Grid.Row="0" Text="Atrás" HorizontalOptions="Start" Clicked="OnAtrasClicked" />
+
+        <RefreshView Grid.Row="1" x:Name="RefreshViewLista" Refreshing="OnRefrescarClicked">
+            <CollectionView x:Name="ListaSitios" SelectionMode="Single"
+                             SelectionChanged="OnSitioSeleccionado">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnDefinitions="Auto,*">
+                            <Label Grid.Column="0" Text="📍" FontSize="20" VerticalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" Margin="10,0,0,0">
+                                <Label Text="{Binding Descripcion}" FontAttributes="Bold" />
+                                <Label FontSize="12" TextColor="Gray">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="Lat: {0:F4}  Lon: {1:F4}">
+                                            <Binding Path="Latitud" />
+                                            <Binding Path="Longitud" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+        <Button Grid.Row="2" Text="Eliminar / Actualizar" Clicked="OnEliminarActualizarClicked" />
+
+        <Grid Grid.Row="3" ColumnDefinitions="*,*" ColumnSpacing="10">
+            <Button Grid.Column="0" Text="Ver Mapa" Clicked="OnVerMapaClicked" />
+            <Button Grid.Column="1" Text="Escuchar Audio" Clicked="OnEscucharAudioClicked" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

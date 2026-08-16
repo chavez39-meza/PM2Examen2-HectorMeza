@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-android</TargetFrameworks>
+    <!-- Si también necesitas iOS o Windows, agrega:
+         net8.0-ios;net8.0-maccatalyst;net8.0-windows10.0.19041.0
+         (requieren Mac / Windows respectivamente para compilar) -->
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SitiosApp</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <ApplicationTitle>Sitios App</ApplicationTitle>
+    <ApplicationId>com.examen.sitiosapp</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- App Icon -->
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#2196F3" />
+
+    <!-- Splash Screen -->
+    <MauiSplashScreen Include="Resources\AppIcon\appicon.svg" Color="#2196F3" BaseSize="128,128" />
+
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
+
+    <!-- Custom Fonts -->
+    <MauiFont Include="Resources\Fonts\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.82" />
+    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.82" />
+    <PackageReference Include="Plugin.Maui.Audio" Version="3.0.1" />
+  </ItemGroup>
+
+</Project>

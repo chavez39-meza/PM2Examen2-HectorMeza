@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SitiosApp.Views.NuevaUbicacionPage"
+             Title="Nueva Ubicación">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="10">
+
+            <!-- Tabs superiores (Nuevo Ubicación / Ubicaciones Salvadas) -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="0">
+                <Button Text="Nuevo Ubicación" Grid.Column="0"
+                        BackgroundColor="#2196F3" TextColor="White" CornerRadius="0" />
+                <Button Text="Ubicaciones Salvadas" Grid.Column="1"
+                        BackgroundColor="#E0E0E0" TextColor="Black" CornerRadius="0"
+                        Clicked="OnVerUbicacionesSalvadasClicked" />
+            </Grid>
+
+            <!-- Foto -->
+            <Frame Padding="0" HeightRequest="220" BorderColor="#CCCCCC" HasShadow="False">
+                <Image x:Name="ImgFoto" Aspect="AspectFill" BackgroundColor="#F0F0F0" />
+            </Frame>
+            <Button Text="📷 Tomar Fotografía" Clicked="OnTomarFotoClicked" />
+
+            <!-- GPS -->
+            <Label Text="Latitud actual" FontAttributes="Bold" />
+            <Entry x:Name="EntryLatitud" IsReadOnly="True" TextColor="Green" />
+
+            <Label Text="Longitud actual" FontAttributes="Bold" />
+            <Entry x:Name="EntryLongitud" IsReadOnly="True" TextColor="Green" />
+
+            <Button Text="📍 Obtener ubicación GPS" Clicked="OnObtenerUbicacionClicked" />
+
+            <!-- Descripción -->
+            <Label Text="Describa la ubicación" FontAttributes="Bold" />
+            <Editor x:Name="EditorDescripcion" HeightRequest="80" Placeholder="Ej: Hospital de Salama" />
+
+            <!-- Audio -->
+            <Label Text="Grabar nota de voz" FontAttributes="Bold" />
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                <Label x:Name="LblEstadoAudio" Grid.Column="0" Text="Sin grabar" VerticalOptions="Center" />
+                <Button x:Name="BtnGrabar" Grid.Column="1" Text="🎤 Grabar" Clicked="OnGrabarAudioClicked" />
+            </Grid>
+
+            <!-- Guardar -->
+            <Button x:Name="BtnGuardar" Text="Salvar Ubicación" BackgroundColor="#2196F3" TextColor="White"
+                    Clicked="OnSalvarUbicacionClicked" Margin="0,15,0,0" />
+            <Button Text="Ubicaciones Salvadas" Clicked="OnVerUbicacionesSalvadasClicked" />
+
+            <ActivityIndicator x:Name="LoadingIndicator" IsRunning="False" IsVisible="False" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
